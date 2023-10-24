@@ -1,0 +1,5 @@
+ID - Tarefa
+7591      ir ao parque
+2740      passear com o cachorro
+4605      guardar louça
+6035      lavar roupas

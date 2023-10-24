@@ -6,9 +6,10 @@ class ToDo():
     def AdicionarTarefa(self, tarefa):
         self.lista.append(tarefa)
         return True
-    
+
     def RemoverTarefa(self, excluir):
         self.lista.pop(excluir)
+        return True
 
     def ListarTarefas(self):
         return self.lista
