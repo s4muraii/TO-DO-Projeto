@@ -1,10 +1,10 @@
-from model import *
-from dao import *
-import random
+from Model import *
+from Dao import *
 
 class ControllerAdicionarTarefa():
-    def __init__(self, tarefa, idtarefa):
+    def __init__(self, tarefa, idtarefa, statusTarefa):
         self.tarefa = tarefa
+        self.statusTarefa = "A"
 
         try:
             if tarefa == "":
@@ -13,7 +13,7 @@ class ControllerAdicionarTarefa():
             else:
 
                 try:
-                    if TODO.AdicionarTarefa(tarefa, idtarefa):
+                    if TODO.AdicionarTarefa(tarefa, idtarefa, statusTarefa):
                         print("Tarefa adicionada.")
 
                     else:
@@ -30,37 +30,30 @@ class ControllerExcluirTarefa():
         self.idexcluir = idexcluir
 
         try:
-            if TODO.RemoverTarefa(self.excluir) == True:
+            if TODO.RemoverTarefa(idexcluir):
                 print("Tarefa removida.")
             else:
                 print("Algum problema foi encontrado.")
-
+                
         except Exception as erro:
-                print("Digite um número válido. Esta tarefa não existe.")
+            print(f"Erro ao excluir a tarefa: {erro}")
+            print("Digite um número válido. Esta tarefa não existe.")
 
 class ControllerListarTarefa():
     def __init__(self):
         ControllerLista = TODO.ListarTarefas()
         cont = 0
-
         for tarefas in ControllerLista:
             cont += 1
+            tarefasCorrigidas = tarefas.split("\t", 2)
+            tarefasFormatadas = tarefasCorrigidas[1][:-1]
             if cont >= 1:
-                print(f"{cont}. {tarefas}")
+                print(f"{cont}. {tarefasFormatadas}")
 
 class ControllerConcluirTarefa():
     def __init__(self):
         pass
 
 class ControllerAlterarTarefa():
-    def __init__(self, indiceAlterar, novaDesc, idtarefa):
-        self.indiceAlterar = indiceAlterar
-        self.novaDesc = novaDesc
-
-        if indiceAlterar == idtarefa:
-            pass
-        
-
-class ControllerListarTarefaConcluida():
     def __init__(self):
         pass

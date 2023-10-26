@@ -1,6 +1,6 @@
-from controller import *
-from dao import *
+from Controller import *
 import os
+import random
 
 sair = 0
 while sair == 0:
@@ -32,7 +32,6 @@ while sair == 0:
             alterarTarefa = ControllerAlterarTarefa(indiceAlterar, novaDesc, idtarefa)
             os.system("pause")
             
-
         case "4":
             os.system("cls")
             #listarTarefasA = #listar tarefas ativas
@@ -41,6 +40,7 @@ while sair == 0:
         case "5":
             os.system("cls")
             print("As tarefas atualmente concluídas são:")
+            concluidas = ControllerConcluirTarefa()
             #listarTarefasC = #listar tarefas concluidas
 
         case "6":
