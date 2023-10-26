@@ -54,5 +54,9 @@ class ControllerConcluirTarefa():
         pass
 
 class ControllerAlterarTarefa():
-    def __init__(self):
-        pass
+    def __init__(self, idexcluir):
+        ControllerLista = TODO.ListarTarefas()
+        for tarefas in ControllerLista:
+            tarefasCorrigidas = tarefas.split("\t", 2)
+            for indice in tarefasCorrigidas:
+                pass
