@@ -1,4 +1,4 @@
-from Dao import *
+from dao import *
 
 class ToDo():
     def __init__(self, tarefa=str):

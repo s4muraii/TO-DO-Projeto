@@ -1,4 +1,4 @@
-from Controller import *
+from controller import *
 import os
 import random
 

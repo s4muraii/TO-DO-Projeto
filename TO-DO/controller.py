@@ -1,10 +1,9 @@
-from Model import *
-from Dao import *
+from model import *
+from dao import *
 
 class ControllerAdicionarTarefa():
-    def __init__(self, tarefa, idtarefa, statusTarefa):
+    def __init__(self, tarefa, idtarefa):
         self.tarefa = tarefa
-        self.statusTarefa = "A"
 
         try:
             if tarefa == "":
@@ -13,7 +12,7 @@ class ControllerAdicionarTarefa():
             else:
 
                 try:
-                    if TODO.AdicionarTarefa(tarefa, idtarefa, statusTarefa):
+                    if TODO.AdicionarTarefa(tarefa, idtarefa):
                         print("Tarefa adicionada.")
 
                     else:

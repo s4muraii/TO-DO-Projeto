@@ -4,10 +4,8 @@ class Dao:
         
 class DaoAdicionarTarefa():
     
-    def adicionar_tarefa(self, tarefa, idtarefa, statusTarefa):
+    def adicionar_tarefa(self, tarefa, idtarefa):
         with open("tarefas.txt", "a") as arquivo:
-            arquivo.write(statusTarefa)
-            arquivo.write("\t")
             arquivo.write(idtarefa)
             arquivo.write("\t")
             arquivo.write(tarefa)
