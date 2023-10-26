@@ -1,18 +1,21 @@
 from model import *
-import os
+from dao import *
 import random
 
 class ControllerAdicionarTarefa():
-    def __init__(self, tarefa):
+    def __init__(self, tarefa, idtarefa):
+        self.tarefa = tarefa
 
         try:
             if tarefa == "":
                 print("Digite uma tarefa válida.")
+
             else:
+
                 try:
-                    self.tarefa = tarefa
-                    if TODO.AdicionarTarefa(self.tarefa) == True:
+                    if TODO.AdicionarTarefa(tarefa, idtarefa):
                         print("Tarefa adicionada.")
+
                     else:
                         print("Algum problema foi encontrado.")
 
@@ -23,10 +26,11 @@ class ControllerAdicionarTarefa():
                 print("Erro ao adicionar a tarefa: {erro}")
 
 class ControllerExcluirTarefa():
-    def __init__(self, excluir):
-        self.excluir = excluir
+    def __init__(self, idexcluir):
+        self.idexcluir = idexcluir
+
         try:
-            if TODO.RemoverTarefa(self.excluir) == True and self.excluir >= "0":
+            if TODO.RemoverTarefa(self.excluir) == True:
                 print("Tarefa removida.")
             else:
                 print("Algum problema foi encontrado.")
@@ -37,9 +41,26 @@ class ControllerExcluirTarefa():
 class ControllerListarTarefa():
     def __init__(self):
         ControllerLista = TODO.ListarTarefas()
-        
-        cont = -1
+        cont = 0
 
         for tarefas in ControllerLista:
             cont += 1
-            print(f"{cont}. {tarefas}")
+            if cont >= 1:
+                print(f"{cont}. {tarefas}")
+
+class ControllerConcluirTarefa():
+    def __init__(self):
+        pass
+
+class ControllerAlterarTarefa():
+    def __init__(self, indiceAlterar, novaDesc, idtarefa):
+        self.indiceAlterar = indiceAlterar
+        self.novaDesc = novaDesc
+
+        if indiceAlterar == idtarefa:
+            pass
+        
+
+class ControllerListarTarefaConcluida():
+    def __init__(self):
+        pass

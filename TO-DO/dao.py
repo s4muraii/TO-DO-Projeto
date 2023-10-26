@@ -1,33 +1,39 @@
+import os
 class Dao:
-    def __init__(self) -> None:
+    def __init__(self):
         self.arquivo= "tarefas.txt"
-
+        
 class DaoAdicionarTarefa():
-    def __init__(self, tarefa, idtarefa):
-        self.idtarefa = idtarefa
-        self.tarefa = tarefa
-
+    
+    def adicionar_tarefa(self, tarefa, idtarefa):
         with open("tarefas.txt", "a") as arquivo:
             arquivo.write(idtarefa)
-            arquivo.write('      ')
+            arquivo.write('\t')
             arquivo.write(tarefa)
             arquivo.write("\n")
-            print("Tarefa adicionada ao DAO.")
+        return True
 
 class DaoExcluirTarefa():
-    def __init__(self, excluir):
-         with open("tarefas.txt", "r") as arquivo:
+    
+    def excluir(excluir):
+        with open("tarefas.txt", "r") as arquivo:
             linhas = arquivo.readlines()
             linhas.pop(int(excluir) - 1)
             with open("tarefas.txt", "w") as arquivo:
                 arquivo.writelines(linhas)
-                print("Tarefa removida do DAO.")
-
+                    
 class DaoListarTarefa():
-    def __init__(self):
+
+    def listar():
         with open("tarefas.txt", "r") as arquivo:
             linhas = arquivo.readlines()
-            cont = 0
-            for tarefas in linhas:
-                cont += 1
-                print(f"{cont}. {tarefas}")
+        return linhas
+
+    def carregar_tarefas(self):
+        if os.path.exists(self.arquivo):
+            with open(self.arquivo, "r") as file:
+                lines = file.readlines()
+                tarefas = [self._criar_tarefa_from_line(line.strip()) for line in lines]
+                return tarefas
+        else:
+            return []

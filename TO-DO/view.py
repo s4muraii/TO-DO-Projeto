@@ -1,41 +1,56 @@
 from controller import *
 from dao import *
 import os
-import random
 
 sair = 0
 while sair == 0:
 
     os.system("cls")
-    print("SOFTWARE DE TO-DO \n1 - Adicionar tarefa \n2 - Listar tarefas \n3 - Remover tarefa \n4 - Sair")
-    opcao = input("Digite a opção desejada > ")
+    print("SOFTWARE DE TO-DO\n1 - Adicionar tarefa \n2 - Listar tarefas \n3 - Alterar tarefa \n4 - Concluir tarefa\n5 - Listar tarefas concluídas\n6 - Excluir tarefas\n7 - Sair")
+    opcao = input("Digite a opção desejada.\n-> ")
 
     match opcao:
         case "1":
             os.system("cls")
-            tarefa = input("Digite a tarefa > ")
-            adicionarTarefa = ControllerAdicionarTarefa(tarefa)
-            adicionarTarefa = DaoAdicionarTarefa(tarefa, idtarefa = str(random.randint(1000, 9999)))
+            tarefa = input("Digite a tarefa -> ")
+            idtarefa = str(random.randint(1000, 9999))
+            addTarefa = ControllerAdicionarTarefa(tarefa, idtarefa)
             os.system("pause")
 
         case "2":
             os.system("cls")
             print("Estes são os itens presentes na lista de tarefas: ")
             listarTarefa = ControllerListarTarefa()
-            print("\n")
-            print("Estes são os itens presentes no DAO: ")
-            listarTarefa = DaoListarTarefa()
             os.system("pause")
 
         case "3":
             os.system("cls")
+            print("Estes são os itens presentes na lista de tarefas:")
             listarTarefa = ControllerListarTarefa()
-            excluir = input("Digite o número da tarefa que deseja excluir > ")
-            excluirTarefa = ControllerExcluirTarefa(excluir)
-            excluirTarefa = DaoExcluirTarefa(excluir)
+            indiceAlterar = input("Qual número da tarefa que deseja alterar? ")
+            novaDesc = input("Qual a nova descrição da tarefa? ")
+            alterarTarefa = ControllerAlterarTarefa(indiceAlterar, novaDesc, idtarefa)
             os.system("pause")
+            
 
         case "4":
+            os.system("cls")
+            #listarTarefasA = #listar tarefas ativas
+            concluirTarefa = input("Qual o número da tarefa que deseja concluir? ")
+
+        case "5":
+            os.system("cls")
+            print("As tarefas atualmente concluídas são:")
+            #listarTarefasC = #listar tarefas concluidas
+
+        case "6":
+            os.system("cls")
+            listarTarefa = ControllerListarTarefa()
+            idexcluir = input("Digite o número da tarefa que deseja excluir -> ")
+            excluirTarefa = ControllerExcluirTarefa(idexcluir)
+            os.system("pause")
+
+        case "7":
             os.system("cls")
             sair = 1
 
