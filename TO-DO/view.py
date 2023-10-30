@@ -1,6 +1,5 @@
 from controller import *
 import os
-import random
 
 sair = 0
 while sair == 0:
@@ -13,8 +12,7 @@ while sair == 0:
         case "1":
             os.system("cls")
             tarefa = input("Digite a tarefa -> ")
-            idtarefa = str(random.randint(1000, 9999))
-            addTarefa = ControllerAdicionarTarefa(tarefa, idtarefa)
+            addTarefa = ControllerAdicionarTarefa(tarefa)
             os.system("pause")
 
         case "2":
@@ -29,7 +27,7 @@ while sair == 0:
             listarTarefa = ControllerListarTarefa()
             indiceAlterar = input("Qual número da tarefa que deseja alterar? ")
             novaDesc = input("Qual a nova descrição da tarefa? ")
-            alterarTarefa = ControllerAlterarTarefa(indiceAlterar, novaDesc, idtarefa)
+            alterarTarefa = ControllerAlterarTarefa(indiceAlterar, novaDesc)
             os.system("pause")
             
         case "4":
@@ -40,7 +38,7 @@ while sair == 0:
         case "5":
             os.system("cls")
             print("As tarefas atualmente concluídas são:")
-            concluidas = ControllerConcluirTarefa()
+            concluidas = ControllerStatusTarefa()
             #listarTarefasC = #listar tarefas concluidas
 
         case "6":

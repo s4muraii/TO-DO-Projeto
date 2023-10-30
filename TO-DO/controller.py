@@ -1,9 +1,12 @@
 from model import *
 from dao import *
+import random 
 
 class ControllerAdicionarTarefa():
-    def __init__(self, tarefa, idtarefa):
+    def __init__(self, tarefa):
         self.tarefa = tarefa
+        idtarefa = str(random.randint(1000, 9999))
+        status = "A"
 
         try:
             if tarefa == "":
@@ -12,24 +15,26 @@ class ControllerAdicionarTarefa():
             else:
 
                 try:
-                    if TODO.AdicionarTarefa(tarefa, idtarefa):
+                    if idtarefa not in TODO.ListarTarefas():
+                        TODO.AdicionarTarefa(tarefa, idtarefa, status)
                         print("Tarefa adicionada.")
 
                     else:
                         print("Algum problema foi encontrado.")
 
                 except Exception as erro:
-                    print("Erro ao adicionar a tarefa: {erro}")
+                    print(f"Erro ao adicionar a tarefa: {erro}")
 
         except Exception as erro:
-                print("Erro ao adicionar a tarefa: {erro}")
+                print(f"Erro ao adicionar a tarefa: {erro}")
 
 class ControllerExcluirTarefa():
     def __init__(self, idexcluir):
         self.idexcluir = idexcluir
 
         try:
-            if TODO.RemoverTarefa(idexcluir):
+            if idexcluir in TODO.ListarTarefas():
+                TODO.RemoverTarefa(idexcluir)
                 print("Tarefa removida.")
             else:
                 print("Algum problema foi encontrado.")
@@ -45,18 +50,14 @@ class ControllerListarTarefa():
         for tarefas in ControllerLista:
             cont += 1
             tarefasCorrigidas = tarefas.split("\t", 2)
-            tarefasFormatadas = tarefasCorrigidas[1][:-1]
+            tarefasFormatadas = tarefasCorrigidas[2][:-1]
             if cont >= 1:
                 print(f"{cont}. {tarefasFormatadas}")
 
-class ControllerConcluirTarefa():
+class ControllerStatusTarefa():
     def __init__(self):
         pass
 
 class ControllerAlterarTarefa():
-    def __init__(self, idexcluir):
-        ControllerLista = TODO.ListarTarefas()
-        for tarefas in ControllerLista:
-            tarefasCorrigidas = tarefas.split("\t", 2)
-            for indice in tarefasCorrigidas:
-                pass
+    def __init__(self):
+        pass
