@@ -9,7 +9,13 @@ class ToDo():
         return daoAdicionar.adicionar_tarefa(tarefa, idtarefa, status)
         
     def ListarTarefas(self):
-        return DaoListarTarefa.listar()
+        with open("tarefas.txt", "r") as arquivo:
+            linhas = arquivo.readlines()
+        return linhas
+    
+    def AtualizarTarefas(self, tarefas_lista):
+        with open("tarefas.txt", "w") as arquivo:
+            arquivo.writelines(tarefas_lista)
 
     def RemoverTarefa(self, idexcluir):
         return DaoExcluirTarefa.excluir(idexcluir)

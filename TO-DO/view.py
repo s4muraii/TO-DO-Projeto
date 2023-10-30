@@ -1,4 +1,6 @@
 from controller import *
+from model import *
+from dao import *
 import os
 
 sair = 0
@@ -18,16 +20,17 @@ while sair == 0:
         case "2":
             os.system("cls")
             print("Estes são os itens presentes na lista de tarefas: ")
-            listarTarefa = ControllerListarTarefa()
+            controller_listar_tarefa = ControllerListarTarefa()
             os.system("pause")
 
         case "3":
             os.system("cls")
             print("Estes são os itens presentes na lista de tarefas:")
-            listarTarefa = ControllerListarTarefa()
+            controller_listar_tarefa = ControllerListarTarefa()
+            controller_alterar_tarefa = ControllerAlterarTarefa()
             indiceAlterar = input("Qual número da tarefa que deseja alterar? ")
             novaDesc = input("Qual a nova descrição da tarefa? ")
-            alterarTarefa = ControllerAlterarTarefa(indiceAlterar, novaDesc)
+            controller_alterar_tarefa.alterar_tarefa(1, "Nova descrição para a tarefa 1")
             os.system("pause")
             
         case "4":
@@ -38,7 +41,6 @@ while sair == 0:
         case "5":
             os.system("cls")
             print("As tarefas atualmente concluídas são:")
-            concluidas = ControllerStatusTarefa()
             #listarTarefasC = #listar tarefas concluidas
 
         case "6":

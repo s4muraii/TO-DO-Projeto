@@ -45,19 +45,47 @@ class ControllerExcluirTarefa():
 
 class ControllerListarTarefa():
     def __init__(self):
-        ControllerLista = TODO.ListarTarefas()
-        cont = 0
-        for tarefas in ControllerLista:
-            cont += 1
-            tarefasCorrigidas = tarefas.split("\t", 2)
-            tarefasFormatadas = tarefasCorrigidas[2][:-1]
-            if cont >= 1:
-                print(f"{cont}. {tarefasFormatadas}")
+            tarefas_lista = TODO.ListarTarefas()
+            
+            cont = 0
+            for tarefa in tarefas_lista:
+                cont += 1
+                tarefas_corrigidas = tarefa.split("\t", 2)
+                
+                if len(tarefas_corrigidas) > 2:
+                    tarefas_formatadas = tarefas_corrigidas[2][:-1]
+                    
+                    if cont >= 1:
+                        print(f"{cont}. {tarefas_formatadas}")
+
+class ControllerAlterarTarefa(ControllerListarTarefa):
+    def __init__(self):
+        super().__init__()  # chama a: ControllerListarTarefa.__init__(self)
+        self.dao_alterar_tarefa = DaoAlterarTarefa()
+        self.controller_todo = ToDo()
+
+    def alterar_tarefa(self, indice, nova_descricao):
+        tarefas_lista = self.ListarTarefas()
+
+        if 1 <= indice <= len(tarefas_lista):
+            tarefa = tarefas_lista[indice - 1]
+
+            tarefas_corrigidas = tarefa.split("\t", 2)
+
+            tarefas_corrigidas[2] = nova_descricao + "\n"
+
+            tarefa_alterada = "\t".join(tarefas_corrigidas)
+
+            tarefas_lista[indice - 1] = tarefa_alterada
+
+            self.AtualizarTarefas(tarefas_lista)
+
+            print(f"Tarefa {indice} alterada com sucesso.")
 
 class ControllerStatusTarefa():
     def __init__(self):
         pass
 
-class ControllerAlterarTarefa():
+class ControllerConcluirTarefa():
     def __init__(self):
         pass

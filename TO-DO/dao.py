@@ -1,5 +1,6 @@
 with open("tarefas.txt", "a") as arquivo:
         arquivo.write("ST   ID  TAREFA\n")
+
 class Dao:
     def __init__(self):
         self.arquivo= "tarefas.txt"
@@ -41,3 +42,10 @@ class DaoStatusTarefa():
     def inativar():
         with open("tarefas.txt", "") as arquivo:
             pass
+
+class DaoAlterarTarefa():
+    def AtualizarTarefas(self, tarefas_lista):
+        with open("tarefas.txt", "w") as arquivo:
+            arquivo.writelines(tarefas_lista)
+
+dao = Dao()
