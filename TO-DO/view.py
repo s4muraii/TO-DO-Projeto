@@ -8,7 +8,7 @@ while sair == 0:
 
     os.system("cls")
     print("SOFTWARE DE TO-DO\n1 - Adicionar tarefa \n2 - Listar tarefas \n3 - Alterar tarefa \n4 - Concluir tarefa\n5 - Listar tarefas concluídas\n6 - Excluir tarefas\n7 - Sair")
-    opcao = input("Digite a opção desejada.\n-> ")
+    opcao = input("Digite a opção Desejada.\n-> ")
 
     match opcao:
         case "1":
