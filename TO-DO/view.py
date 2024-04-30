@@ -29,7 +29,7 @@ while sair == 0:
             controller_listar_tarefa = ControllerListarTarefa()
             controller_alterar_tarefa = ControllerAlterarTarefa()
             indiceAlterar = input("Qual número da tarefa que deseja alterar? ")
-            novaDesc = input("Qual a nova descrição da tarefa? ")
+            novaDesc = input("Qual a nova descrição da tarefa?")
             controller_alterar_tarefa.alterar_tarefa(1, "Nova descrição para a tarefa 1")
             os.system("pause")
             
